@@ -1,0 +1,200 @@
+{
+    "logger": {
+      "level": "debug",
+      "timestamp": false
+    },
+    "esclient": {
+      "apiVersion": "7.5",
+      "hosts": [
+        { "host": "elasticsearch" }
+      ]
+    },
+    "elasticsearch": {
+      "settings": {
+        "index": {
+          "refresh_interval": "10s",
+          "number_of_replicas": "0",
+          "number_of_shards": "1"
+        }
+      }
+    },
+    "acceptance-tests": {
+      "endpoints": {
+        "docker": "http://api:4000/v1/"
+      }
+    },
+    "api": {
+      "services": {
+        "placeholder": { "url": "http://placeholder:4100" },
+        "pip": { "url": "http://pip:4200" },
+        "interpolation": { "url": "http://interpolation:4300" },
+        "libpostal": { "url": "http://libpostal:4400" }
+      }
+    },
+    "imports": {
+      "adminLookup": {
+        "enabled": true
+      },
+      "blacklist": {
+        "files": [
+          "/data/blacklist/osm.txt"
+        ]
+      },
+      "geonames": {
+        "datapath": "/data/geonames",
+        "countryCode": "US"
+      },
+      "openstreetmap": {
+        "download": [
+          { "sourceURL": "https://download.geofabrik.de/north-america/us/north-carolina-latest.osm.pbf" }
+        ],
+        "leveldbpath": "/tmp",
+        "datapath": "/data/openstreetmap",
+        "import": [{
+          "filename": "north-carolina-latest.osm.pbf"
+        }]
+      },
+      "openaddresses": {
+        "datapath": "/data/openaddresses",
+        "files": [
+          "us/nc/alamance.csv",
+          "us/nc/alexander.csv",
+          "us/nc/alleghany.csv",
+          "us/nc/anson.csv",
+          "us/nc/ashe.csv",
+          "us/nc/avery.csv",
+          "us/nc/beaufort.csv",
+          "us/nc/bertie.csv",
+          "us/nc/bladen.csv",
+          "us/nc/blowing_rock.csv",
+          "us/nc/brunswick.csv",
+          "us/nc/buncombe.csv",
+          "us/nc/burke.csv",
+          "us/nc/cabarrus.csv",
+          "us/nc/caldwell.csv",
+          "us/nc/camden.csv",
+          "us/nc/carteret.csv",
+          "us/nc/cary.csv",
+          "us/nc/caswell.csv",
+          "us/nc/catawba.csv",
+          "us/nc/chatham.csv",
+          "us/nc/chowan.csv",
+          "us/nc/city_of_boone.csv",
+          "us/nc/city_of_carolina_beach.csv",
+          "us/nc/city_of_elizabeth_city.csv",
+          "us/nc/city_of_fuquay_varina.csv",
+          "us/nc/city_of_greensboro.csv",
+          "us/nc/city_of_king.csv",
+          "us/nc/city_of_salisbury.csv",
+          "us/nc/clay.csv",
+          "us/nc/cleveland.csv",
+          "us/nc/columbus.csv",
+          "us/nc/craven.csv",
+          "us/nc/cumberland.csv",
+          "us/nc/currituck.csv",
+          "us/nc/dare.csv",
+          "us/nc/davidson.csv",
+          "us/nc/davie.csv",
+          "us/nc/duplin.csv",
+          "us/nc/durham.csv",
+          "us/nc/ebci.csv",
+          "us/nc/edgecombe.csv",
+          "us/nc/forsyth.csv",
+          "us/nc/franklin.csv",
+          "us/nc/gaston.csv",
+          "us/nc/gates.csv",
+          "us/nc/graham.csv",
+          "us/nc/granville.csv",
+          "us/nc/greene.csv",
+          "us/nc/guilford.csv",
+          "us/nc/halifax.csv",
+          "us/nc/harnett.csv",
+          "us/nc/haywood.csv",
+          "us/nc/henderson.csv",
+          "us/nc/hertford.csv",
+          "us/nc/hoke.csv",
+          "us/nc/hyde.csv",
+          "us/nc/iredell.csv",
+          "us/nc/jackson.csv",
+          "us/nc/johnston.csv",
+          "us/nc/jones.csv",
+          "us/nc/lee.csv",
+          "us/nc/lenoir.csv",
+          "us/nc/lincoln.csv",
+          "us/nc/macon.csv",
+          "us/nc/madison.csv",
+          "us/nc/martin.csv",
+          "us/nc/mcdowell.csv",
+          "us/nc/mecklenburg.csv",
+          "us/nc/mitchell.csv",
+          "us/nc/montgomery.csv",
+          "us/nc/moore.csv",
+          "us/nc/nash.csv",
+          "us/nc/new_hanover.csv",
+          "us/nc/northampton.csv",
+          "us/nc/onslow.csv",
+          "us/nc/orange.csv",
+          "us/nc/pamlico.csv",
+          "us/nc/pasquotank.csv",
+          "us/nc/pender.csv",
+          "us/nc/perquimans.csv",
+          "us/nc/person.csv",
+          "us/nc/pitt.csv",
+          "us/nc/polk.csv",
+          "us/nc/randolph.csv",
+          "us/nc/richmond.csv",
+          "us/nc/robeson.csv",
+          "us/nc/rockingham.csv",
+          "us/nc/rowan.csv",
+          "us/nc/rutherford.csv",
+          "us/nc/sampson.csv",
+          "us/nc/scotland.csv",
+          "us/nc/stanly.csv",
+          "us/nc/statewide.csv",
+          "us/nc/stokes.csv",
+          "us/nc/surry.csv",
+          "us/nc/swain.csv",
+          "us/nc/town_of_chapel_hill.csv",
+          "us/nc/transylvania.csv",
+          "us/nc/tyrrell.csv",
+          "us/nc/union.csv",
+          "us/nc/vance.csv",
+          "us/nc/wake.csv",
+          "us/nc/warren.csv",
+          "us/nc/washington.csv",
+          "us/nc/watauga.csv",
+          "us/nc/wayne.csv",
+          "us/nc/wilkes.csv",
+          "us/nc/wilson.csv",
+          "us/nc/yadkin.csv",
+          "us/nc/yancey.csv"
+        ]
+      },
+      "polyline": {
+        "datapath": "/data/polylines",
+        "files": [ "extract.0sv" ]
+      },
+      "whosonfirst": {
+        "datapath": "/data/whosonfirst",
+        "countryCode": "US",
+        "importPlace": [
+          "85688773"
+        ]
+      },
+      "transit": {
+        "datapath": "/data/transit",
+        "feeds": [
+        ]
+      },
+      "interpolation": {
+        "download": {
+          "tiger": {
+            "datapath": "/data/tiger",
+            "states": [
+              { "state_code": 37 }
+            ]
+          }
+        }
+      }
+    }
+  }
