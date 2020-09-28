@@ -1,0 +1,140 @@
+{
+    "logger": {
+      "level": "debug",
+      "timestamp": false
+    },
+    "esclient": {
+      "apiVersion": "7.5",
+      "hosts": [
+        { "host": "elasticsearch" }
+      ]
+    },
+    "elasticsearch": {
+      "settings": {
+        "index": {
+          "refresh_interval": "10s",
+          "number_of_replicas": "0",
+          "number_of_shards": "1"
+        }
+      }
+    },
+    "acceptance-tests": {
+      "endpoints": {
+        "docker": "http://api:4000/v1/"
+      }
+    },
+    "api": {
+      "services": {
+        "placeholder": { "url": "http://placeholder:4100" },
+        "pip": { "url": "http://pip:4200" },
+        "interpolation": { "url": "http://interpolation:4300" },
+        "libpostal": { "url": "http://libpostal:4400" }
+      }
+    },
+    "imports": {
+      "adminLookup": {
+        "enabled": true
+      },
+      "blacklist": {
+        "files": [
+          "/data/blacklist/osm.txt"
+        ]
+      },
+      "geonames": {
+        "datapath": "/data/geonames",
+        "countryCode": "US"
+      },
+      "openstreetmap": {
+        "download": [
+          { "sourceURL":
+          "https://download.geofabrik.de/north-america/us/florida-latest.osm.pbf" }
+        ],
+        "leveldbpath": "/tmp",
+        "datapath": "/data/openstreetmap",
+        "import": [{
+          "filename": "florida-latest.osm.pbf"
+        }]
+      },
+      "openaddresses": {
+        "datapath": "/data/openaddresses",
+        "files": [
+          "us/fl/alachua.csv",
+          "us/fl/bay.csv",
+          "us/fl/broward.csv",
+          "us/fl/charlotte.csv",
+          "us/fl/citrus.csv",
+          "us/fl/city_of_fort_lauderdale.csv",
+          "us/fl/city_of_gainesville.csv",
+          "us/fl/city_of_key_biscayne.csv",
+          "us/fl/city_of_lakeland.csv",
+          "us/fl/city_of_pinellas_park.csv",
+          "us/fl/city_of_west_palm_beach.csv",
+          "us/fl/clay.csv",
+          "us/fl/collier.csv",
+          "us/fl/desoto.csv",
+          "us/fl/duval.csv",
+          "us/fl/escambia.csv",
+          "us/fl/flagler.csv",
+          "us/fl/gulf.csv",
+          "us/fl/hernando.csv",
+          "us/fl/highlands.csv",
+          "us/fl/hillsborough.csv",
+          "us/fl/indian_river.csv",
+          "us/fl/lake.csv",
+          "us/fl/lee.csv",
+          "us/fl/leon.csv",
+          "us/fl/_loveland.csv",
+          "us/fl/manatee.csv",
+          "us/fl/marion.csv",
+          "us/fl/martin.csv",
+          "us/fl/miami2.csv",
+          "us/fl/miami.csv",
+          "us/fl/monroe.csv",
+          "us/fl/nassau.csv",
+          "us/fl/okaloosa.csv",
+          "us/fl/orange_county.csv",
+          "us/fl/osceola.csv",
+          "us/fl/palm_beach_county.csv",
+          "us/fl/pasco.csv",
+          "us/fl/pinellas.csv",
+          "us/fl/polk.csv",
+          "us/fl/putnam.csv",
+          "us/fl/santa_rosa.csv",
+          "us/fl/seminole.csv",
+          "us/fl/statewide2.csv",
+          "us/fl/statewide.csv",
+          "us/fl/st-johns.csv",
+          "us/fl/st-lucie.csv",
+          "us/fl/sumter.csv",
+          "us/fl/volusia.csv",
+          "us/fl/walton.csv"
+        ]
+      },
+      "polyline": {
+        "datapath": "/data/polylines",
+        "files": [ "extract.0sv" ]
+      },
+      "whosonfirst": {
+        "datapath": "/data/whosonfirst",
+        "countryCode": "US",
+        "importPlace": [
+          "85688651"
+        ]
+      },
+      "transit": {
+        "datapath": "/data/transit",
+        "feeds": [
+        ]
+      },
+      "interpolation": {
+        "download": {
+          "tiger": {
+            "datapath": "/data/tiger",
+            "states": [
+              { "state_code": 12 }
+            ]
+          }
+        }
+      }
+    }
+  }
