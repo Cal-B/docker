@@ -7,6 +7,13 @@ To add a new WhosOnFirst region, use [Spelunker](https://spelunker.whosonfirst.o
 
 To change the Tiger statecode, refer to [this page](https://github.com/pelias/interpolation).
 
+Getting `Creating extract at /data/placeholder/wof.extract
+/code/pelias/placeholder/node_modules/pelias-blacklist-stream/parser.js:11
+    throw new Error( 'file not found' );` ?
+Create a `synonyms` and `blacklist` folder in the project folder, and place a blank `osm.txt` inside the blacklist folder 
+
+Sometimes pelias will create a `custom_street.txt` and `custom_name.txt` directory inside `synonyms`, delete these and make text files in their place 
+
 ```bash
 pelias compose pull
 pelias elastic start
