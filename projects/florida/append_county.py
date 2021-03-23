@@ -22,13 +22,15 @@ total = 0
 public_records_exemption = 0
 
 parsed_data = pandas.DataFrame(columns = ['location_name', 'location_type', 'address'])
-refined_data = pandas.DataFrame(columns = ['location_name', 'location_type', 'address', 'latitude', 'longitude'])
+refined_data = pandas.DataFrame(columns = ['location_name', 'location_type', 'address', 'county', 'latitude', 'longitude'])
 
 print("Reading files into dataframe...")
 filenames = (f for f in os.listdir(src) if f.endswith('.csv'))
 for pos, file in enumerate(filenames):
     print("Loading " + os.path.join(src,file) + "...")
     extracted_data = pandas.read_csv(os.path.join(src,file), usecols = [0, 1, 2], names = ['location_name', 'location_type', 'address'])
+    extracted_data['county'] = str(extracted_data.iloc[[2]].location_name.values[0]).strip()
+    # print(extracted_data.head(4))
     parsed_data = parsed_data.append(extracted_data, ignore_index = True)       # TODO Should switch to concat at some point
     
 print("Done")
@@ -38,15 +40,22 @@ print("Frame has " + str(len(parsed_data.index)) + " entries")
 latitudes = []
 longitudes = []
 check_for_address = False
+current_county = ''
+last_row_value = ''
 for index, row in parsed_data.iterrows():
+    # if (last_row_value.find('2020 Primary') != -1):
+    #     if (str(row['location_name']).find("County") != -1):
+    #         current_county = str(row['location_name']).strip()
+    #         print(current_county)
     if (str(row['address']) == 'Address'):  # our next row is an address
         check_for_address = True
         continue
     if check_for_address:
-        refined_data = refined_data.append({'location_name': row['location_name'], 'location_type' : row['location_type'], 'address' : row['address']},  ignore_index=True)
+        refined_data = refined_data.append({'location_name': row['location_name'], 'location_type' : row['location_type'], 'address' : row['address'], 'county' : row['county']},  ignore_index=True)
         check_for_address = False
+    last_row_value = str(row['location_name'])
 
-print(refined_data.head(10))
+# print(refined_data.head(10))
 for index, row in refined_data.iterrows():
     if total % 10000 == 0:
         print(str(total) + " processed")

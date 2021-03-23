@@ -1,0 +1,5 @@
+per race and ethnicity, percentage 
+dist. of poling places across counties , percentage
+
+['W' 'B' 'U' 'O' 'A' 'M' 'I' ' ' nan]
+['NL' 'UN' 'HL' nan]
