@@ -9,15 +9,24 @@ import math
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("-i", "--input", required=True, help="Input file")
+arg_parser.add_argument("-o", "--output", required=False, help="Output file directory and name, default location is inside the input folder under [filename]_latsandlongs.csv")
 args = vars(arg_parser.parse_args())
 
 src = args['input']
+output = args['output']
+
+if output is None:
+    output = os.path.join(str(Path(src).parent), os.path.splitext(os.path.basename(src))[0] + '_latsandlongs.csv')
+    output_file = open(output, 'w')
+    print("Creating file " + os.path.splitext(os.path.basename(src))[0] + "_latsandlongs.csv at: " + output)
+else:
+    output_file = open(output, 'w')
 
 output_csv = open(src, "a")
-output_csv_writer = csv.writer(output_csv)
+output_csv_writer = csv.writer(output_file)
 
-missing_latsandlongs = os.path.join(str(Path(src).parent), os.path.splitext(os.path.basename(src))[0] + '_missing_latandlong.csv')
-output_csv_missing_latandlong = open(missing_latsandlongs, "a")
+#missing_latsandlongs = os.path.join(str(Path(src).parent), os.path.splitext(os.path.basename(src))[0] + '_missing_latandlong.csv')
+#output_csv_missing_latandlong = open(missing_latsandlongs, "a")
 
 url_header = "http://localhost:4000/v1/autocomplete?text="
 

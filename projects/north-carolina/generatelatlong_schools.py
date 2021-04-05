@@ -8,7 +8,7 @@ import pandas
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("-i", "--input", required=True, help="Input file")
-arg_parser.add_argument("-o", "--output", required=False, help="Output file directory and name, default location is inside the input folder under latsandlongs.txt")
+arg_parser.add_argument("-o", "--output", required=True, help="Output file directory and name")
 args = vars(arg_parser.parse_args())
 
 src = args['input']
