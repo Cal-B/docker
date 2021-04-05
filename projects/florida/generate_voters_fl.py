@@ -65,7 +65,7 @@ for index, row in parsed_data.iterrows():
 
 parsed_data['latitude'] = pandas.Series(latitudes)
 parsed_data['longitude'] = pandas.Series(longitudes)
-parsed_data.to_csv("~/Downloads/flvoter_statewide_latsandlongs.csv", mode='w', header=True, sep='\t', index=False)
+parsed_data.to_csv(output, mode='w', header=True, sep='\t', index=False)
 print(str(counter) + " / " + str(total) + " had missing latitude/longitude")
 print(str(public_records_exemption) + " were exempt from providing addresses")
 

@@ -8,9 +8,11 @@ import math
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("-i", "--input", required=True, help="Input file")
+arg_parser.add_argument("-o", "--output", required=True, help="output file location")
 args = vars(arg_parser.parse_args())
 
 src = args['input']
+output = args['output']
 
 
 url_header = "http://localhost:4000/v1/autocomplete?text="
@@ -50,5 +52,5 @@ for index, row in parsed_data.iterrows():
 
 parsed_data['latitude'] = pandas.Series(latitudes)
 parsed_data['longitude'] = pandas.Series(longitudes)
-parsed_data.to_csv("~/Downloads/fl_schools_latsandlongs.csv", mode='w', header=True, sep='\t', index=False)
+parsed_data.to_csv(output, mode='w', header=True, sep='\t', index=False)
 print(str(counter) + " / " + str(total) + " had missing latitude/longitude")

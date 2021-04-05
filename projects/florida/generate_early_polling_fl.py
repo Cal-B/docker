@@ -9,7 +9,7 @@ import math
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("-i", "--input", required=True, help="Input folder directory")
-arg_parser.add_argument("-o", "--output", required=False, help="Output folder directory, default location is inside the input folder")
+arg_parser.add_argument("-o", "--output", required=True, help="Output folder directory")
 args = vars(arg_parser.parse_args())
 
 src = args['input']
@@ -73,7 +73,7 @@ for index, row in refined_data.iterrows():
 
 refined_data['latitude'] = pandas.Series(latitudes)
 refined_data['longitude'] = pandas.Series(longitudes)
-refined_data.to_csv("~/Downloads/fl_early_polling_statewide_latsandlongs.csv", mode='w', header=True, sep='\t', index=False)
+refined_data.to_csv(output, mode='w', header=True, sep='\t', index=False)
 print(str(counter) + " / " + str(total) + " had missing latitude/longitude")
 
 
