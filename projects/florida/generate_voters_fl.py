@@ -8,7 +8,7 @@ import pandas
 import math
 
 arg_parser = argparse.ArgumentParser()
-arg_parser.add_argument("-i", "--input", required=True, help="Input folder directory")
+arg_parser.add_argument("-i", "--input", required=True, help="Input folder directory, directory full of csvs")
 arg_parser.add_argument("-o", "--output", required=False, help="Output folder directory, default location is inside the input folder")
 args = vars(arg_parser.parse_args())
 
