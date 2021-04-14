@@ -1,0 +1,17 @@
+# Generating latlong data 
+1. Run `launch_pelias.sh` in the project folder you want to run Pelias on (`/north-carolina/launch_pelias.sh` or `/florida/launch_pelias.sh`)
+2. Run `run_florida.sh` or `run_north_carolina.sh` depending on which instance of Pelias is currently active 
+    2a. run_florida.sh 
+    - Early Polling input CSVs are located at `/home/h302/Downloads/conv_csvs`, they have been edited to work with the generation code 
+    - Library input CSV is located at `~/Downloads/florida_schools.csv`
+    - Voter input CSVs are located at `/home/h302/Downloads/FloridaData/voter_data_by_county`
+    2b. run_north_carolina.sh
+    - CSVs were processed on a different machine that has since been wiped
+
+# Possible errors when launching Pelias
+Getting `Creating extract at /data/placeholder/wof.extract
+/code/pelias/placeholder/node_modules/pelias-blacklist-stream/parser.js:11
+    throw new Error( 'file not found' );` ?
+Create a `synonyms` and `blacklist` folder in the project folder, and place a blank `osm.txt` inside the blacklist folder 
+
+Sometimes pelias will create a `custom_street.txt` and `custom_name.txt` directory inside `synonyms`, delete these and make text files in their place 

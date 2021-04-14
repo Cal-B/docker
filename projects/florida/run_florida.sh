@@ -22,10 +22,10 @@ case ${choice} in
     echo "Enter output CSV path (including filename and extension):"
     read output_csv
     
-    python generatelatlong_schools.py -i ${input_csv} -o ${output_csv}
+    python generate_libraries.py -i ${input_csv} -o ${output_csv}
     ;;
     3)
-    echo "Enter path to the FOLDER containing early polling CSVs:"
+    echo "Enter path to the FOLDER containing voting CSVs:"
     read input_csv
     echo "Enter output CSV path (including filename and extension):"
     read output_csv
